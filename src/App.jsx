@@ -1,11 +1,23 @@
+import { Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import Home from './pages/Home';
+import Test from './pages/Test';
+import Plats from './pages/Plats';
+import './App.css';
+
 function App() {
   return (
-    <div style={{ fontFamily: 'Arial', padding: 24 }}>
-      <h1>Bienvenue sur le site de Théo 🚀</h1>
-      <p>Ce site a été créé avec Vite + React + GitHub Pages.</p>
-      <p>Première modification réussie 🎉</p>
-    </div>
-  )
+    <>
+      <Header />
+      <div style={{ paddingTop: '80px' }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/test" element={<Test />} />
+          <Route path="/plats" element={<Plats />} />
+        </Routes>
+      </div>
+    </>
+  );
 }
 
-export default App
+export default App;
