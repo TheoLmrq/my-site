@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import DishCarousel from '../components/DishCarousel';
+import HowItWorks from '../components/HowItWorks';
 import '../styles/Home.css';
 
 function Home() {
@@ -57,6 +58,9 @@ function Home() {
       
       {/* Dish Carousel Section */}
       <DishCarousel />
+      
+      {/* How It Works Section */}
+      <HowItWorks />
     </>
   );
 }
