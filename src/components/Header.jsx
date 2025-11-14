@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
-import logoFitchen from '../assets/image/LOGO FITCHEN.jpg';
+import logoFitchen from '../assets/image/LOGO_FITCHEN-removebg-preview.png';
 import '../styles/Header.css';
 
 function Header() {
