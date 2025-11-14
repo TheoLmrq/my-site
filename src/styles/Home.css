@@ -14,7 +14,7 @@
   position: absolute;
   inset: 0;
   background: 
-    radial-gradient(circle at 20% 50%, rgba(255, 68, 0, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 20% 50%, rgba(227, 38, 38, 0.08) 0%, transparent 50%),
     radial-gradient(circle at 80% 50%, rgba(0, 180, 255, 0.06) 0%, transparent 50%);
   animation: bgPulse 8s ease-in-out infinite;
 }
@@ -152,7 +152,7 @@
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #FF4400 0%, #FF8800 50%, #FFD700 100%);
+  background: linear-gradient(135deg, #E32626 0%, #FF4444 50%, #FF6666 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -236,11 +236,11 @@
 
 /* PRIMARY BUTTON */
 .cta-primary {
-  background: linear-gradient(135deg, #FF4400 0%, #FF6600 100%);
+  background: linear-gradient(135deg, #E32626 0%, #FF4444 100%);
   color: #fff;
   border: none;
   box-shadow: 
-    0 0 20px rgba(255, 68, 0, 0.4),
+    0 0 20px rgba(227, 38, 38, 0.4),
     0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
@@ -255,7 +255,7 @@
 .cta-primary:hover {
   transform: translateY(-2px);
   box-shadow: 
-    0 0 30px rgba(255, 68, 0, 0.6),
+    0 0 30px rgba(227, 38, 38, 0.6),
     0 8px 25px rgba(0, 0, 0, 0.4);
 }
 

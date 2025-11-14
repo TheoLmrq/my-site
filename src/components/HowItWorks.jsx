@@ -14,7 +14,7 @@ const tabs = [
         calories: 2450,
         progress: 75,
         macros: [
-          { name: 'Protéines', value: 142, unit: 'g', color: '#FF6600' },
+          { name: 'Protéines', value: 142, unit: 'g', color: '#E32626' },
           { name: 'Glucides', value: 285, unit: 'g', color: '#00B4FF' },
           { name: 'Lipides', value: 68, unit: 'g', color: '#FFD700' }
         ]

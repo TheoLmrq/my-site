@@ -19,7 +19,7 @@
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 2px;
-  background: linear-gradient(135deg, #FF4400 0%, #FF8800 50%, #FFD700 100%);
+  background: linear-gradient(135deg, #E32626 0%, #FF4444 50%, #FF6666 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -41,7 +41,7 @@
 .title-underline {
   width: 100px;
   height: 4px;
-  background: linear-gradient(90deg, transparent, #FF4400, transparent);
+  background: linear-gradient(90deg, transparent, #E32626, transparent);
   margin: 0 auto;
   border-radius: 2px;
   animation: underlineGlow 2s ease-in-out infinite;
@@ -49,10 +49,10 @@
 
 @keyframes underlineGlow {
   0%, 100% {
-    box-shadow: 0 0 10px rgba(255, 68, 0, 0.5);
+    box-shadow: 0 0 10px rgba(227, 38, 38, 0.5);
   }
   50% {
-    box-shadow: 0 0 20px rgba(255, 68, 0, 0.8);
+    box-shadow: 0 0 20px rgba(227, 38, 38, 0.8);
   }
 }
 
@@ -96,9 +96,9 @@
 
 .dish-card:hover {
   transform: scale(1.05) translateY(-10px);
-  border-color: rgba(255, 68, 0, 0.5);
+  border-color: rgba(227, 38, 38, 0.5);
   box-shadow: 
-    0 0 30px rgba(255, 68, 0, 0.3),
+    0 0 30px rgba(227, 38, 38, 0.3),
     0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
@@ -162,21 +162,21 @@
   flex-direction: column;
   align-items: center;
   padding: 12px;
-  background: rgba(255, 68, 0, 0.05);
+  background: rgba(227, 38, 38, 0.05);
   border-radius: 8px;
-  border: 1px solid rgba(255, 68, 0, 0.2);
+  border: 1px solid rgba(227, 38, 38, 0.2);
   transition: all 0.3s ease;
 }
 
 .dish-card:hover .nutrition-item {
-  background: rgba(255, 68, 0, 0.1);
-  border-color: rgba(255, 68, 0, 0.4);
+  background: rgba(227, 38, 38, 0.1);
+  border-color: rgba(227, 38, 38, 0.4);
 }
 
 .nutrition-value {
   font-size: 24px;
   font-weight: 900;
-  color: #FF6600;
+  color: #E32626;
   line-height: 1;
   margin-bottom: 4px;
 }
@@ -199,7 +199,7 @@
   height: 200%;
   background: radial-gradient(
     circle,
-    rgba(255, 68, 0, 0.15) 0%,
+    rgba(227, 38, 38, 0.15) 0%,
     transparent 70%
   );
   opacity: 0;

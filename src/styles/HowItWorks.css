@@ -211,7 +211,7 @@
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, #FF6600, #00B4FF);
+  background: linear-gradient(90deg, #E32626, #00B4FF);
   border-radius: 4px;
   transition: width 0.6s ease;
   box-shadow: 0 0 10px rgba(0, 180, 255, 0.5);
@@ -268,7 +268,7 @@
 
 .feature-bullet {
   font-size: 24px;
-  color: #FF6600;
+  color: #E32626;
   flex-shrink: 0;
   line-height: 1.5;
 }
@@ -299,7 +299,7 @@
 
 .timeline-item:hover {
   background: rgba(0, 180, 255, 0.08);
-  border-left-color: #FF6600;
+  border-left-color: #E32626;
   transform: translateX(8px);
 }
 
