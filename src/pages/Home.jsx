@@ -5,9 +5,6 @@ import '../styles/Home.css';
 function Home() {
   return (
     <>
-      {/* Dish Carousel Section */}
-      <DishCarousel />
-      
       {/* Hero Section */}
       <div className="home-container">
         {/* Animated Background */}
@@ -57,6 +54,9 @@ function Home() {
         {/* Grid Overlay */}
         <div className="grid-overlay"></div>
       </div>
+      
+      {/* Dish Carousel Section */}
+      <DishCarousel />
     </>
   );
 }
