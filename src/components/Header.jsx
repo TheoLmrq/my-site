@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
+import logoFitchen from '../assets/image/LOGO FITCHEN.jpg';
 import '../styles/Header.css';
 
 function Header() {
@@ -14,8 +15,8 @@ function Header() {
     <header className="header">
       <div className="header-container">
         {/* Logo */}
-        <Link to="/" className="logo" onClick={() => setIsMobileMenuOpen(false)}>
-          FITCHEN
+        <Link to="/" className="logo-link" onClick={() => setIsMobileMenuOpen(false)}>
+          <img src={logoFitchen} alt="Fitchen" className="logo-image" />
         </Link>
 
         {/* Hamburger Menu Button (Mobile) */}
@@ -32,22 +33,22 @@ function Header() {
         {/* Navigation Links */}
         <nav className={`nav-links ${isMobileMenuOpen ? 'active' : ''}`}>
           <Link 
-            to="/recettes" 
-            className={`nav-link ${location.pathname === '/recettes' ? 'active' : ''}`}
+            to="/nos-recettes" 
+            className={`nav-link ${location.pathname === '/nos-recettes' ? 'active' : ''}`}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Nos recettes
           </Link>
           <Link 
-            to="/packs" 
-            className={`nav-link ${location.pathname === '/packs' ? 'active' : ''}`}
+            to="/nos-packs" 
+            className={`nav-link ${location.pathname === '/nos-packs' ? 'active' : ''}`}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Nos packs
           </Link>
           <Link 
-            to="/histoire" 
-            className={`nav-link ${location.pathname === '/histoire' ? 'active' : ''}`}
+            to="/notre-histoire" 
+            className={`nav-link ${location.pathname === '/notre-histoire' ? 'active' : ''}`}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Notre histoire
