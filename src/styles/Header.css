@@ -8,19 +8,39 @@
   justify-content: flex-end;
   align-items: center;
   padding: 0 40px;
-  background-color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 1000;
+  transition: all 0.3s ease;
 }
 
 .logo {
   font-size: 28px;
-  font-weight: bold;
-  color: #4CAF50;
+  font-weight: 900;
+  color: #fff;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.logo::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(135deg, #FF4400 0%, #FFD700 100%);
+  transition: width 0.3s ease;
 }
 
 .logo:hover {
-  color: #45a049;
+  color: #FF6600;
+}
+
+.logo:hover::after {
+  width: 100%;
 }

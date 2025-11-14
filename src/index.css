@@ -22,8 +22,12 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background-color: white;
-  color: #333;
+  background-color: #0A0A0A;
+  color: #fff;
+}
+
+#root {
+  min-height: 100vh;
 }
 
 h1 {
