@@ -64,6 +64,8 @@
   scrollbar-width: none;
   -ms-overflow-style: none;
   cursor: grab;
+  scroll-behavior: smooth;
+  user-select: none;
 }
 
 .carousel-container::-webkit-scrollbar {
@@ -72,6 +74,7 @@
 
 .carousel-container:active {
   cursor: grabbing;
+  scroll-behavior: auto;
 }
 
 /* ===== CAROUSEL TRACK ===== */
@@ -92,6 +95,8 @@
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
+  flex-shrink: 0;
+  cursor: pointer;
 }
 
 .dish-card:hover {
@@ -116,6 +121,8 @@
   height: 100%;
   object-fit: cover;
   transition: transform 0.4s ease;
+  pointer-events: none;
+  user-select: none;
 }
 
 .dish-card:hover .dish-image {

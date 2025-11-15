@@ -1,75 +1,18 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import '../styles/DishCarousel.css';
 
-// Import des images
-import beefPastaBolognese from '../assets/image/BEEF PASTA - BOLOGNESE.png';
-import beefRiceMassaman from '../assets/image/BEEF RICE - SAUCE MASSAMAN.png';
-import chickenPastaCremeBrocoli from '../assets/image/CHICKEN PASTA - CREME BROCOLI.png';
-import chickenPastaPestoBrocoli from '../assets/image/CHICKEN PASTA - CREMY PESTO BROCOLI.png';
-import chickenPastaTomates from '../assets/image/CHICKEN PASTA - TOMATES SECHEES.png';
-import riceBeefBrocoli from '../assets/image/RICE BEEF - BROCOLI POIVRON .png';
-import riceChickenCurry from '../assets/image/RICE CHICKEN - CURRY PETIT POIS.png';
+// Import des nouvelles images
+import boeufPoivronRiz from '../assets/image/BOEUF POIVRON RIZ.png';
+import chickenCurryPetitPois from '../assets/image/CHICKEN CURRY PETIT POIDS.png';
+import patesBolo from '../assets/image/PATES BOLO.png';
+import curryVertThai from '../assets/image/CURRY VERT THAI.png';
+import patesPouletBrocoli from '../assets/image/PATES POULET BROCCOLI.png';
 
 const dishes = [
   {
     id: 1,
-    name: 'Beef Pasta – Bolognese',
-    image: beefPastaBolognese,
-    nutrition: {
-      kcal: 520,
-      proteins: 45,
-      carbs: 52,
-      fat: 12
-    }
-  },
-  {
-    id: 2,
-    name: 'Beef Rice – Sauce Massaman',
-    image: beefRiceMassaman,
-    nutrition: {
-      kcal: 580,
-      proteins: 42,
-      carbs: 58,
-      fat: 15
-    }
-  },
-  {
-    id: 3,
-    name: 'Chicken Pasta – Crème Brocoli',
-    image: chickenPastaCremeBrocoli,
-    nutrition: {
-      kcal: 485,
-      proteins: 40,
-      carbs: 50,
-      fat: 10
-    }
-  },
-  {
-    id: 4,
-    name: 'Chicken Pasta – Crémy Pesto Brocoli',
-    image: chickenPastaPestoBrocoli,
-    nutrition: {
-      kcal: 510,
-      proteins: 38,
-      carbs: 48,
-      fat: 14
-    }
-  },
-  {
-    id: 5,
-    name: 'Chicken Pasta – Tomates Séchées',
-    image: chickenPastaTomates,
-    nutrition: {
-      kcal: 475,
-      proteins: 41,
-      carbs: 49,
-      fat: 9
-    }
-  },
-  {
-    id: 6,
-    name: 'Rice Beef – Brocoli Poivron',
-    image: riceBeefBrocoli,
+    name: 'Boeuf aux poivrons & riz basmati',
+    image: boeufPoivronRiz,
     nutrition: {
       kcal: 545,
       proteins: 44,
@@ -78,13 +21,46 @@ const dishes = [
     }
   },
   {
-    id: 7,
-    name: 'Rice Chicken – Curry Petit Pois',
-    image: riceChickenCurry,
+    id: 2,
+    name: 'Poulet curry vert & petits pois',
+    image: chickenCurryPetitPois,
     nutrition: {
       kcal: 500,
       proteins: 39,
       carbs: 54,
+      fat: 10
+    }
+  },
+  {
+    id: 3,
+    name: 'Pâtes complètes à la bolognaise',
+    image: patesBolo,
+    nutrition: {
+      kcal: 520,
+      proteins: 45,
+      carbs: 52,
+      fat: 12
+    }
+  },
+  {
+    id: 4,
+    name: 'Curry vert thaï au poulet',
+    image: curryVertThai,
+    nutrition: {
+      kcal: 485,
+      proteins: 38,
+      carbs: 48,
+      fat: 13
+    }
+  },
+  {
+    id: 5,
+    name: 'Pâtes poulet & crème de brocoli',
+    image: patesPouletBrocoli,
+    nutrition: {
+      kcal: 485,
+      proteins: 40,
+      carbs: 50,
       fat: 10
     }
   }
@@ -92,47 +68,49 @@ const dishes = [
 
 function DishCarousel() {
   const scrollContainerRef = useRef(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
 
-  useEffect(() => {
-    const scrollContainer = scrollContainerRef.current;
-    if (!scrollContainer) return;
+  // Mouse drag handlers
+  const handleMouseDown = (e) => {
+    setIsDragging(true);
+    setStartX(e.pageX - scrollContainerRef.current.offsetLeft);
+    setScrollLeft(scrollContainerRef.current.scrollLeft);
+    scrollContainerRef.current.style.cursor = 'grabbing';
+  };
 
-    let scrollAmount = 0;
-    const scrollSpeed = 0.5;
-    let animationFrameId;
+  const handleMouseMove = (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - scrollContainerRef.current.offsetLeft;
+    const walk = (x - startX) * 2; // Scroll speed multiplier
+    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
+  };
 
-    const autoScroll = () => {
-      scrollAmount += scrollSpeed;
-      
-      if (scrollAmount >= scrollContainer.scrollWidth / 2) {
-        scrollAmount = 0;
-      }
-      
-      scrollContainer.scrollLeft = scrollAmount;
-      animationFrameId = requestAnimationFrame(autoScroll);
-    };
+  const handleMouseUp = () => {
+    setIsDragging(false);
+    scrollContainerRef.current.style.cursor = 'grab';
+  };
 
-    animationFrameId = requestAnimationFrame(autoScroll);
+  const handleMouseLeave = () => {
+    if (isDragging) {
+      setIsDragging(false);
+      scrollContainerRef.current.style.cursor = 'grab';
+    }
+  };
 
-    const handleMouseEnter = () => {
-      cancelAnimationFrame(animationFrameId);
-    };
+  // Touch handlers for mobile
+  const handleTouchStart = (e) => {
+    setStartX(e.touches[0].pageX - scrollContainerRef.current.offsetLeft);
+    setScrollLeft(scrollContainerRef.current.scrollLeft);
+  };
 
-    const handleMouseLeave = () => {
-      animationFrameId = requestAnimationFrame(autoScroll);
-    };
-
-    scrollContainer.addEventListener('mouseenter', handleMouseEnter);
-    scrollContainer.addEventListener('mouseleave', handleMouseLeave);
-
-    return () => {
-      cancelAnimationFrame(animationFrameId);
-      if (scrollContainer) {
-        scrollContainer.removeEventListener('mouseenter', handleMouseEnter);
-        scrollContainer.removeEventListener('mouseleave', handleMouseLeave);
-      }
-    };
-  }, []);
+  const handleTouchMove = (e) => {
+    const x = e.touches[0].pageX - scrollContainerRef.current.offsetLeft;
+    const walk = (x - startX) * 2;
+    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
+  };
 
   return (
     <section className="dish-carousel-section">
@@ -141,16 +119,34 @@ function DishCarousel() {
         <div className="title-underline"></div>
       </div>
 
-      <div className="carousel-container" ref={scrollContainerRef}>
+      <div 
+        className="carousel-container"
+        ref={scrollContainerRef}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseLeave}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+      >
         <div className="carousel-track">
-          {/* Duplicate dishes for infinite scroll effect */}
-          {[...dishes, ...dishes].map((dish, index) => (
-            <div key={`${dish.id}-${index}`} className="dish-card">
+          {dishes.map((dish) => (
+            <div 
+              key={dish.id} 
+              className="dish-card"
+              onClick={() => {
+                if (!isDragging) {
+                  // Prêt pour navigation future
+                  console.log(`Clicked on ${dish.name}`);
+                }
+              }}
+            >
               <div className="dish-image-wrapper">
                 <img 
                   src={dish.image} 
                   alt={dish.name}
                   className="dish-image"
+                  draggable="false"
                 />
                 <div className="dish-overlay"></div>
               </div>
