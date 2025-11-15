@@ -41,7 +41,7 @@ function Home() {
           </p>
 
           <div className="cta-buttons">
-            <Link to="/test" className="cta-button cta-primary">
+            <Link to="/quiz" className="cta-button cta-primary">
               <span className="button-glow"></span>
               <span className="button-text">Faire le test</span>
             </Link>
