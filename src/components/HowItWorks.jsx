@@ -25,14 +25,14 @@ const tabs = [
     id: 2,
     icon: '🚚',
     title: 'Des plats frais, livrés chez toi',
-    description: 'Tes plats arrivent prêts à être dégustés, directement chez toi.',
+    description: 'Nos plats sont disponibles en 3 tailles (S, M, L), pour s\'adapter précisément à tes besoins énergétiques.',
     content: {
       title: 'Livraison hebdomadaire',
       type: 'list',
       items: [
-        '7 plats frais – prêts en 3 min au micro-ondes',
-        'Conservation 7 jours – ou congélation possible',
-        'Zéro préparation – tu n\'as qu\'à réchauffer & déguster'
+        'Tu choisis selon ton objectif, ton appétit ou ton entraînement du jour',
+        'On te livre des repas frais, prêts à déguster',
+        'Plus besoin de peser, de cuisiner ou de réfléchir : tu n\'as qu\'à réchauffer, manger, performer'
       ]
     }
   },
@@ -40,15 +40,15 @@ const tabs = [
     id: 3,
     icon: '💪',
     title: 'Zéro stress, 100 % énergie',
-    description: 'Pas de menu à créer, pas de macros à compter, juste de la régularité.',
+    description: 'Plus de menus à planifier ni de macros à compter : tu suis ton plan, on s\'occupe du reste.',
     content: {
       title: 'Ta journée simplifiée',
       type: 'timeline',
       items: [
-        { icon: '🌅', text: 'Matin : petit-déj rapide, énergie garantie' },
-        { icon: '🏋️', text: 'Entraînement : carburant optimal déjà prévu' },
-        { icon: '🍱', text: 'Repas : 3 min au micro-ondes, c\'est prêt' },
-        { icon: '😴', text: 'Récupération : ton corps reconstruit pendant que tu dors' }
+        { icon: '🧠', text: 'Moins de charge mentale, plus de régularité' },
+        { icon: '⚡', text: 'Apport énergétique suffisant pour tenir ta journée' },
+        { icon: '�️', text: 'Performance assurée à l\'entraînement' },
+        { icon: '😴', text: 'Récupération optimale' }
       ]
     }
   },
