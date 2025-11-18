@@ -127,9 +127,30 @@
 .hero-content {
   position: relative;
   z-index: 10;
-  text-align: center;
-  padding: 0 20px;
-  max-width: 900px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 60px;
+  padding: 0 60px;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ===== LEFT COLUMN ===== */
+.hero-left {
+  flex: 1;
+  max-width: 600px;
+  text-align: left;
+}
+
+/* ===== RIGHT COLUMN ===== */
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 600px;
 }
 
 /* ===== TITLE ===== */
@@ -182,15 +203,22 @@
 
 /* ===== SUBTITLE ===== */
 .hero-subtitle {
-  font-size: clamp(16px, 2vw, 20px);
-  font-weight: 300;
+  font-size: clamp(18px, 2vw, 22px);
+  font-weight: 400;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.7);
-  margin: 0 0 50px 0;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 0 15px 0;
   animation: fadeIn 1s ease-out 0.4s backwards;
+}
+
+/* ===== DESCRIPTION ===== */
+.hero-description {
+  font-size: clamp(16px, 1.5vw, 18px);
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0 0 40px 0;
+  animation: fadeIn 1s ease-out 0.5s backwards;
 }
 
 @keyframes fadeIn {
@@ -205,11 +233,9 @@
 /* ===== CTA BUTTONS ===== */
 .cta-buttons {
   display: flex;
-  flex-direction: row;
-  gap: 20px;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 15px;
+  align-items: flex-start;
   animation: fadeIn 1s ease-out 0.6s backwards;
 }
 
@@ -269,9 +295,9 @@
 
 /* SECONDARY BUTTON */
 .cta-secondary {
-  background: transparent;
+  background: #000;
   color: #fff;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.2);
   position: relative;
 }
 
@@ -279,15 +305,16 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 .cta-secondary:hover {
-  border-color: rgba(255, 255, 255, 0.6);
+  background: #1a1a1a;
+  border-color: rgba(255, 255, 255, 0.4);
   transform: translateY(-2px);
-  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 .cta-secondary:hover::before {
@@ -298,15 +325,72 @@
   transform: translateY(0);
 }
 
+/* ===== HERO IMAGE (LOT 1) ===== */
+.hero-image-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  animation: fadeIn 1s ease-out 0.8s backwards;
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+}
+
+.hero-image:hover {
+  transform: scale(1.02);
+}
+
 /* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .hero-content {
+    flex-direction: column;
+    gap: 40px;
+    padding: 0 40px;
+    text-align: center;
+  }
+
+  .hero-left {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .hero-right {
+    max-width: 400px;
+  }
+
+  .cta-buttons {
+    align-items: center;
+    width: 100%;
+  }
+
+  .cta-button {
+    width: 100%;
+    max-width: 350px;
+  }
+}
+
 @media (max-width: 768px) {
+  .hero-content {
+    padding: 0 20px;
+  }
+
   .hero-title {
     font-size: clamp(36px, 12vw, 60px);
   }
   
   .hero-subtitle {
     font-size: 16px;
-    margin-bottom: 40px;
+  }
+
+  .hero-description {
+    font-size: 14px;
+    margin-bottom: 30px;
   }
   
   .cta-buttons {
@@ -316,6 +400,14 @@
   .cta-button {
     width: 100%;
     max-width: 300px;
+  }
+
+  .hero-right {
+    max-width: 300px;
+  }
+
+  .hero-image-container {
+    max-width: 350px;
   }
   
   .streak {

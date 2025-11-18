@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import DishCarousel from '../components/DishCarousel';
 import HowItWorks from '../components/HowItWorks';
+import lot1Image from '../assets/image/LOT 1.png';
 import '../styles/Home.css';
 
 function Home() {
@@ -27,28 +28,44 @@ function Home() {
           <div className="streak streak-3"></div>
         </div>
 
-        {/* Hero Content */}
+        {/* Hero Content - Two Columns */}
         <div className="hero-content">
-          <h1 className="hero-title">
-            <span className="title-line">PUSH YOUR</span>
-            <span className="title-line gradient-text">LIMITS</span>
-          </h1>
-          
-          <p className="hero-subtitle">
-            Découvrez votre potentiel. Optimisez vos performances.
-            <br />
-            L'excellence commence ici.
-          </p>
-
-          <div className="cta-buttons">
-            <Link to="/quiz" className="cta-button cta-primary">
-              <span className="button-glow"></span>
-              <span className="button-text">Faire le test</span>
-            </Link>
+          {/* Left Column - Text & CTAs */}
+          <div className="hero-left">
+            <h1 className="hero-title">
+              <span className="title-line">PUSH YOUR</span>
+              <span className="title-line gradient-text">LIMITS</span>
+            </h1>
             
-            <Link to="/plats" className="cta-button cta-secondary">
-              <span className="button-text">Découvrir nos plats</span>
-            </Link>
+            <p className="hero-subtitle">
+              Découvrez votre potentiel. Optimisez vos performances.
+            </p>
+
+            <p className="hero-description">
+              Des repas adaptés à ton métabolisme et tes objectifs.
+            </p>
+
+            <div className="cta-buttons">
+              <Link to="/quiz" className="cta-button cta-primary">
+                <span className="button-glow"></span>
+                <span className="button-text">Faire le test</span>
+              </Link>
+              
+              <Link to="/plats" className="cta-button cta-secondary">
+                <span className="button-text">Découvrir nos plats</span>
+              </Link>
+            </div>
+          </div>
+
+          {/* Right Column - LOT 1 Image */}
+          <div className="hero-right">
+            <div className="hero-image-container">
+              <img 
+                src={lot1Image} 
+                alt="LOT 1 Fitchen" 
+                className="hero-image"
+              />
+            </div>
           </div>
         </div>
 

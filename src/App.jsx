@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './pages/Home';
 import Test from './pages/Test';
@@ -12,14 +12,10 @@ import Results from './pages/Results';
 import './App.css';
 
 function App() {
-  const location = useLocation();
-  const hideHeaderPaths = ['/quiz', '/results'];
-  const showHeader = !hideHeaderPaths.includes(location.pathname);
-
   return (
     <>
-      {showHeader && <Header />}
-      <div style={{ paddingTop: showHeader ? '80px' : '0' }}>
+      <Header />
+      <div style={{ paddingTop: '120px' }}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/test" element={<Test />} />
