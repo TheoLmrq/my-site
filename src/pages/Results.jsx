@@ -23,6 +23,64 @@ function Results() {
   }, [navigate]);
 
   const calculateResults = (data) => {
+    // Mapping des sports spécifiques
+    const sportSpecificNames = {
+      // Endurance
+      'running': 'Course à pied',
+      'trail': 'Trail',
+      'walking': 'Marche sportive',
+      'cycling': 'Cyclisme / VTT',
+      'swimming': 'Natation',
+      'triathlon': 'Triathlon',
+      // Musculation
+      'bodybuilding': 'Musculation',
+      'crossfit': 'CrossFit',
+      'weightlifting': 'Haltérophilie',
+      'hiit': 'HIIT / Circuit training',
+      'gym': 'Fitness en salle',
+      // Combat
+      'boxing': 'Boxe anglaise',
+      'muaythai': 'Boxe thaï / kickboxing',
+      'mma': 'MMA',
+      'bjj': 'Jiu-Jitsu Brésilien (JJB)',
+      'judo': 'Judo',
+      'karate': 'Karaté',
+      // Collectif
+      'football': 'Football',
+      'basketball': 'Basketball',
+      'handball': 'Handball',
+      'rugby': 'Rugby',
+      'volleyball': 'Volleyball',
+      // Raquette
+      'tennis': 'Tennis',
+      'padel': 'Padel',
+      'squash': 'Squash',
+      'badminton': 'Badminton',
+      // Glisse
+      'ski': 'Ski',
+      'snowboard': 'Snowboard',
+      'surf': 'Surf',
+      'skateboard': 'Skateboard',
+      'roller': 'Roller',
+      // Technique
+      'golf': 'Golf',
+      'archery': 'Tir à l\'arc',
+      'fencing': 'Escrime',
+      'tabletennis': 'Tennis de table',
+      // Artistique
+      'dance': 'Danse',
+      'zumba': 'Fitness chorégraphié',
+      'gymnastics': 'Gymnastique',
+      'yoga': 'Yoga',
+      'pilates': 'Pilates',
+      // Mécanique
+      'moto': 'Moto',
+      'karting': 'Karting',
+      'offroad': 'Véhicules off-road',
+      // Aucun
+      'Marche / Aucun sport': 'Marche / Aucun sport'
+    };
+
     // Extraction des données
     const birthDate = data[1]?.split('/');
     const sex = data[2];
@@ -221,7 +279,7 @@ function Results() {
       activity: activityNames[activity] || activity,
       steps,
       sportCategory: sportCategoryNames[sportCategory] || sportCategory,
-      sportSpecific: sportSpecific === 'Marche / Aucun sport' ? sportSpecific : sportSpecific,
+      sportSpecific: sportSpecificNames[sportSpecific] || sportSpecific,
       bmr: Math.round(bmr),
       tdee: Math.round(tdeeBase),
       targetCalories: Math.round(totalCalories),
@@ -308,7 +366,7 @@ function Results() {
             </div>
             <div className="info-item">
               <span className="info-label">Sexe</span>
-              <span className="info-value">{results.sex === 'male' ? 'Homme' : 'Femme'}</span>
+              <span className="info-value">{results.sex === 'homme' ? 'Homme' : 'Femme'}</span>
             </div>
             <div className="info-item">
               <span className="info-label">Taille</span>
@@ -320,13 +378,13 @@ function Results() {
             </div>
             <div className="info-item">
               <span className="info-label">Objectif</span>
-              <span className="info-value">{results.objective}</span>
+              <span className="info-value">{results.objectiveText}</span>
             </div>
             <div className="info-item">
               <span className="info-label">Activité</span>
               <span className="info-value">{results.activity}</span>
             </div>
-            {results.steps > 0 && (
+            {results.steps && results.steps !== 'Non renseigné' && results.steps > 0 && (
               <div className="info-item">
                 <span className="info-label">Pas quotidiens</span>
                 <span className="info-value">{results.steps.toLocaleString()}</span>
