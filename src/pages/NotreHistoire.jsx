@@ -51,32 +51,30 @@ function NotreHistoire() {
       <section className="timeline-section" ref={timelineRef}>
         {/* Chapter 1 */}
         <div className="timeline-block fade-in">
-          <div className="timeline-icon shock">⚡</div>
           <div className="timeline-content">
             <h2 className="chapter-title">Quand tout a basculé</h2>
             <p className="chapter-intro">
               À 19 ans, j'ai réalisé quelque chose que je n'aurais jamais pensé possible :<br/>
-              <strong className="text-red">j'étais devenu obèse.</strong>
+              <strong className="text-red">J'ÉTAIS DEVENU OBÈSE.</strong>
             </p>
             <div className="story-text">
               <p>Enfant et adolescent, j'avais un métabolisme rapide. Je pouvais manger tout et n'importe quoi, sans jamais prendre un gramme.</p>
               <p>Mais après la croissance, la réalité m'a rattrapé :</p>
               <ul className="impact-list">
-                <li>les études,</li>
-                <li>les premiers jobs,</li>
-                <li>moins de sport,</li>
-                <li>les sorties,</li>
-                <li>le stress,</li>
-                <li>les repas pris sur le pouce...</li>
+                <li>Les études,</li>
+                <li>Les premiers jobs,</li>
+                <li>Moins de sport,</li>
+                <li>Les sorties,</li>
+                <li>Le stress,</li>
+                <li>Les repas pris sur le pouce...</li>
               </ul>
-              <p className="weight-stat">En 2 ans, j'ai pris <span className="stat-number">25 kilos</span>, sans vraiment m'en rendre compte.</p>
+              <p className="weight-stat">En 2 ans, j'ai pris <span className="stat-number">25 KILOS</span>, sans vraiment m'en rendre compte.</p>
             </div>
           </div>
         </div>
 
         {/* Chapter 2 */}
         <div className="timeline-block fade-in reverse">
-          <div className="timeline-icon success">💪</div>
           <div className="timeline-content">
             <h2 className="chapter-title">La transformation</h2>
             <p className="chapter-intro">
@@ -84,19 +82,19 @@ function NotreHistoire() {
             </p>
             <div className="story-text">
               <ul className="action-list">
-                <li>comprendre les macronutriments,</li>
-                <li>tester différents régimes,</li>
-                <li>analyser mes apports,</li>
-                <li>reconstruire une routine sportive,</li>
-                <li>apprendre ce que mon corps avait réellement besoin.</li>
+                <li>Comprendre les macronutriments,</li>
+                <li>Tester différents régimes,</li>
+                <li>Analyser mes apports,</li>
+                <li>Reconstruire une routine sportive,</li>
+                <li>Apprendre ce que mon corps avait réellement besoin.</li>
               </ul>
               <div className="result-box">
                 <p className="result-stat">J'ai décidé d'y mettre <span className="highlight-red">100 %</span> de ma concentration</p>
-                <p className="result-achievement">En 3 mois, j'ai perdu <span className="stat-number">20 kilos</span></p>
+                <p className="result-achievement">En 3 mois, j'ai perdu <span className="stat-number">20 KILOS</span></p>
               </div>
               <p className="transformation-text">
                 Je redécouvrais totalement ma vie :<br/>
-                je me sentais <strong>plus agile</strong>, <strong>plus fort</strong>, <strong>plus endurant</strong>, <strong>plus confiant</strong> — j'avais enfin l'impression de maîtriser mon quotidien.
+                Je me sentais <strong>PLUS AGILE</strong>, <strong>PLUS FORT</strong>, <strong>PLUS ENDURANT</strong>, <strong>PLUS CONFIANT</strong> — j'avais enfin l'impression de maîtriser mon quotidien.
               </p>
             </div>
           </div>
@@ -104,7 +102,6 @@ function NotreHistoire() {
 
         {/* Chapter 3 */}
         <div className="timeline-block fade-in">
-          <div className="timeline-icon warning">⚠️</div>
           <div className="timeline-content">
             <h2 className="chapter-title">Le revers de la médaille</h2>
             <p className="chapter-intro">
@@ -112,21 +109,21 @@ function NotreHistoire() {
             </p>
             <div className="story-text">
               <ul className="burden-list">
-                <li>compter ses calories,</li>
-                <li>suivre ses macros,</li>
-                <li>cuisiner chaque soir,</li>
-                <li>préparer ses tupperwares,</li>
-                <li>planifier ses repas,</li>
-                <li>éviter les pièges du quotidien…</li>
+                <li>Compter ses calories,</li>
+                <li>Suivre ses macros,</li>
+                <li>Cuisiner chaque soir,</li>
+                <li>Préparer ses tupperwares,</li>
+                <li>Planifier ses repas,</li>
+                <li>Éviter les pièges du quotidien…</li>
               </ul>
-              <p className="burden-text">C'est une <span className="text-red">charge mentale énorme</span>.</p>
+              <p className="burden-text">C'est une <span className="text-red">CHARGE MENTALE ÉNORME</span>.</p>
               <p>Et malgré mon assiduité au sport, la vie réelle a fini par reprendre le dessus :<br/>
-              pression au travail, imprévus, événements sociaux, fatigue…</p>
+              Pression au travail, imprévus, événements sociaux, fatigue…</p>
               <p>Progressivement, j'ai perdu le fil et j'ai commencé à reprendre du poids.</p>
               <div className="truth-box">
                 <p className="truth-statement">
                   La vérité, c'est que :<br/>
-                  <span className="highlight-red">bien manger au quotidien est difficile</span> — même pour quelqu'un de motivé.
+                  <span className="highlight-red">BIEN MANGER AU QUOTIDIEN EST DIFFICILE</span> — même pour quelqu'un de motivé.
                 </p>
               </div>
             </div>
@@ -135,25 +132,24 @@ function NotreHistoire() {
 
         {/* Chapter 4 */}
         <div className="timeline-block fade-in reverse">
-          <div className="timeline-icon idea">💡</div>
           <div className="timeline-content">
             <h2 className="chapter-title">Pourquoi Fitchen existe</h2>
             <div className="story-text">
               <p>J'ai alors compris que le problème n'était pas la volonté,<br/>
-              ni le manque de connaissances.</p>
+              Ni le manque de connaissances.</p>
               
               <div className="problem-box">
                 <p className="problem-title">Le problème, c'est :</p>
                 <div className="problem-grid">
-                  <div className="problem-item">👉 le temps</div>
-                  <div className="problem-item">👉 la logistique</div>
-                  <div className="problem-item">👉 la charge mentale</div>
+                  <div className="problem-item">👉 LE TEMPS</div>
+                  <div className="problem-item">👉 LA LOGISTIQUE</div>
+                  <div className="problem-item">👉 LA CHARGE MENTALE</div>
                 </div>
               </div>
 
               <p className="solution-text">
                 C'est pour cela que j'ai créé <span className="brand">Fitchen</span> :<br/>
-                une solution <strong>simple</strong>, <strong>accessible</strong> et pensée pour les personnes actives, les sportifs, et tous ceux qui veulent prendre soin d'eux sans se prendre la tête.
+                Une solution <strong>SIMPLE</strong>, <strong>ACCESSIBLE</strong> et pensée pour les personnes actives, les sportifs, et tous ceux qui veulent prendre soin d'eux sans se prendre la tête.
               </p>
             </div>
           </div>
@@ -235,12 +231,12 @@ function NotreHistoire() {
       <section className="foryou-section fade-in">
         <h2 className="section-title">Fitchen, c'est pour toi si…</h2>
         <div className="foryou-grid">
-          <div className="foryou-item">✓ tu veux performer au sport</div>
-          <div className="foryou-item">✓ tu veux reprendre le contrôle de ton alimentation</div>
-          <div className="foryou-item">✓ tu veux perdre du poids, en prendre, ou simplement stabiliser</div>
-          <div className="foryou-item">✓ tu n'as pas le temps de cuisiner</div>
-          <div className="foryou-item">✓ tu veux arrêter de penser à « quoi manger ce soir »</div>
-          <div className="foryou-item">✓ tu veux combiner santé, goût et praticité</div>
+          <div className="foryou-item">✓ Tu veux performer au sport</div>
+          <div className="foryou-item">✓ Tu veux reprendre le contrôle de ton alimentation</div>
+          <div className="foryou-item">✓ Tu veux perdre du poids, en prendre, ou simplement stabiliser</div>
+          <div className="foryou-item">✓ Tu n'as pas le temps de cuisiner</div>
+          <div className="foryou-item">✓ Tu veux arrêter de penser à « quoi manger ce soir »</div>
+          <div className="foryou-item">✓ Tu veux combiner santé, goût et praticité</div>
         </div>
       </section>
 
@@ -251,7 +247,7 @@ function NotreHistoire() {
           <p className="final-text">
             J'ai créé ce service parce que j'aurais aimé l'avoir quand j'en avais besoin.<br/>
             Aujourd'hui, mon histoire devient ton raccourci.<br/>
-            Pour t'aider à <strong>mieux manger</strong>, <strong>mieux vivre</strong>, <strong>mieux performer</strong> — sans sacrifier ton quotidien.
+            Pour t'aider à <strong>MIEUX MANGER</strong>, <strong>MIEUX VIVRE</strong>, <strong>MIEUX PERFORMER</strong> — sans sacrifier ton quotidien.
           </p>
           <div className="final-cta">
             <h3 className="welcome-text">Bienvenue chez Fitchen.</h3>
