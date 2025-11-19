@@ -6,8 +6,20 @@
   background: #0A0A0A;
   color: white;
   overflow-x: hidden;
+  overflow-y: auto;
   position: relative;
   font-family: 'Inter', sans-serif;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.histoire-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.histoire-container {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 /* ===== HERO SECTION ===== */

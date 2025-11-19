@@ -9,6 +9,18 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Hide scrollbar globally */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
+html,
+body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -24,6 +36,7 @@ body {
   min-height: 100vh;
   background-color: #0A0A0A;
   color: #fff;
+  overflow-x: hidden;
 }
 
 #root {
