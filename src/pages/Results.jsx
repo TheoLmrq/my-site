@@ -528,8 +528,14 @@ function Results() {
             )}
             {results.sportCategory && results.sportCategory !== 'Aucun sport' && (
               <div className="profile-item">
-                <div className="profile-label">Sport</div>
+                <div className="profile-label">Catégorie de sport</div>
                 <div className="profile-value">{results.sportCategory}</div>
+              </div>
+            )}
+            {results.sportSpecific && results.sportCategory !== 'Aucun sport' && (
+              <div className="profile-item">
+                <div className="profile-label">Sport</div>
+                <div className="profile-value">{results.sportSpecific}</div>
               </div>
             )}
           </div>
