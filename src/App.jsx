@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Home from './pages/Home';
 import Test from './pages/Test';
 import Plats from './pages/Plats';
+import DishProduct from './pages/DishProduct';
 import NosRecettes from './pages/NosRecettes';
 import NosPacks from './pages/NosPacks';
 import NotreHistoire from './pages/NotreHistoire';
@@ -22,6 +23,7 @@ function App() {
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/results" element={<Results />} />
           <Route path="/plats" element={<Plats />} />
+          <Route path="/plats/:slug" element={<DishProduct />} />
           <Route path="/nos-recettes" element={<NosRecettes />} />
           <Route path="/nos-packs" element={<NosPacks />} />
           <Route path="/notre-histoire" element={<NotreHistoire />} />
