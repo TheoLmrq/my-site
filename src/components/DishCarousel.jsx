@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/DishCarousel.css';
 
 // Import des nouvelles images
@@ -12,6 +13,7 @@ const dishes = [
   {
     id: 1,
     name: 'Boeuf aux poivrons & riz basmati',
+    slug: 'boeuf-poivrons-riz-basmati',
     image: boeufPoivronRiz,
     nutrition: {
       kcal: 545,
@@ -23,6 +25,7 @@ const dishes = [
   {
     id: 2,
     name: 'Poulet curry vert & petits pois',
+    slug: 'poulet-curry-vert-petits-pois',
     image: chickenCurryPetitPois,
     nutrition: {
       kcal: 500,
@@ -34,6 +37,7 @@ const dishes = [
   {
     id: 3,
     name: 'Pâtes complètes à la bolognaise',
+    slug: 'pates-bolognaise',
     image: patesBolo,
     nutrition: {
       kcal: 520,
@@ -45,6 +49,7 @@ const dishes = [
   {
     id: 4,
     name: 'Curry vert thaï au poulet',
+    slug: 'poulet-curry-vert-petits-pois',
     image: curryVertThai,
     nutrition: {
       kcal: 485,
@@ -56,6 +61,7 @@ const dishes = [
   {
     id: 5,
     name: 'Pâtes poulet & crème de brocoli',
+    slug: 'pates-poulet-brocoli',
     image: patesPouletBrocoli,
     nutrition: {
       kcal: 485,
@@ -67,6 +73,7 @@ const dishes = [
 ];
 
 function DishCarousel() {
+  const navigate = useNavigate();
   const scrollContainerRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -136,8 +143,7 @@ function DishCarousel() {
               className="dish-card"
               onClick={() => {
                 if (!isDragging) {
-                  // Prêt pour navigation future
-                  console.log(`Clicked on ${dish.name}`);
+                  navigate(`/plats/${dish.slug}`);
                 }
               }}
             >
