@@ -33,28 +33,24 @@ function Home() {
           {/* Left Column - Text & CTAs */}
           <div className="hero-left">
             <h1 className="hero-title">
-              <span className="title-line">BOOSTE TA</span>
-              <span className="title-line gradient-text">PERFORMANCE</span>
-              <span className="title-line">AVEC UNE NUTRITION</span>
-              <span className="title-line gradient-text">SUR-MESURE</span>
+              <span className="title-line">TASTE THE</span>
+              <span className="title-line">DIFFERENCE</span>
+              <span className="title-line gradient-text">FEEL</span>
+              <span className="title-line">THE</span>
+              <span className="title-line gradient-text">POWER</span>
             </h1>
             
             <p className="hero-subtitle">
-              Des repas adaptés à ton métabolisme, tes objectifs et ton rythme.
-            </p>
-
-            <p className="hero-description">
-              Frais, équilibrés, livrés chez toi.
+              Vos plats sportifs, frais et préparés pour tous vos objectifs, livrés à domicile.
             </p>
 
             <div className="cta-buttons">
               <Link to="/quiz" className="cta-button cta-primary">
-                <span className="button-glow"></span>
-                <span className="button-text">Faire le test</span>
+                <span className="button-text">FAIRE LE TEST</span>
               </Link>
               
               <Link to="/plats" className="cta-button cta-secondary">
-                <span className="button-text">Découvrir nos plats</span>
+                <span className="button-text">DÉCOUVRIR NOS PLATS</span>
               </Link>
             </div>
           </div>
