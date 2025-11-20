@@ -51,7 +51,7 @@ function Header() {
             className={`nav-link ${location.pathname === '/quiz' ? 'active' : ''}`}
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            Mon programme personnalisé
+            Programme personnalisé
           </Link>
           <Link 
             to="/notre-histoire" 

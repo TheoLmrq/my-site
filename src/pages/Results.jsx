@@ -1,11 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/Results.css';
+import '../styles/ResultsPremium.css';
 
 function Results() {
   const navigate = useNavigate();
   const [answers, setAnswers] = useState(null);
   const [results, setResults] = useState(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [animatedValues, setAnimatedValues] = useState({
+    bmr: 0,
+    tdee: 0,
+    targetCalories: 0,
+    proteinGrams: 0,
+    carbsGrams: 0,
+    fatGrams: 0
+  });
+  const cardsRef = useRef([]);
 
   useEffect(() => {
     // Récupérer les réponses du quiz
@@ -339,174 +349,345 @@ function Results() {
     navigate('/commander');
   };
 
+  // Animation count-up pour les nombres
+  useEffect(() => {
+    if (!results) return;
+
+    const duration = 2000; // 2 secondes
+    const fps = 60;
+    const frames = (duration / 1000) * fps;
+    let frame = 0;
+
+    const interval = setInterval(() => {
+      frame++;
+      const progress = frame / frames;
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+
+      setAnimatedValues({
+        bmr: Math.round(results.bmr * easeOutQuart),
+        tdee: Math.round(results.tdee * easeOutQuart),
+        targetCalories: Math.round(results.targetCalories * easeOutQuart),
+        proteinGrams: Math.round(results.macros.protein.grams * easeOutQuart),
+        carbsGrams: Math.round(results.macros.carbs.grams * easeOutQuart),
+        fatGrams: Math.round(results.macros.fat.grams * easeOutQuart)
+      });
+
+      if (frame >= frames) {
+        clearInterval(interval);
+        setAnimatedValues({
+          bmr: results.bmr,
+          tdee: results.tdee,
+          targetCalories: results.targetCalories,
+          proteinGrams: results.macros.protein.grams,
+          carbsGrams: results.macros.carbs.grams,
+          fatGrams: results.macros.fat.grams
+        });
+      }
+    }, 1000 / fps);
+
+    return () => clearInterval(interval);
+  }, [results]);
+
+  // Apparition des cartes au scroll
+  useEffect(() => {
+    setTimeout(() => setIsVisible(true), 100);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    cardsRef.current.forEach((card) => {
+      if (card) observer.observe(card);
+    });
+
+    return () => observer.disconnect();
+  }, [results]);
+
+  // Génération de l'explication personnalisée "Pourquoi ces macros"
+  const generateWhyMacros = () => {
+    if (!results) return '';
+
+    const { objective, sportCategory, activity, weight } = results;
+    let text = '';
+
+    // Intro personnalisée selon objectif
+    if (objective === 'Perte de poids') {
+      text = `Pour **perdre du poids efficacement** tout en préservant ta masse musculaire, `;
+    } else if (objective === 'Prise de muscle') {
+      text = `Pour **construire du muscle** et optimiser ta progression, `;
+    } else if (objective === 'Prise de poids') {
+      text = `Pour **prendre du poids sainement** et développer ta masse, `;
+    } else {
+      text = `Pour **maintenir ton poids** et rester en forme, `;
+    }
+
+    // Partie protéines selon sport
+    if (sportCategory === 'Musculation & Fitness') {
+      text += `nous avons maximisé tes **protéines** (${results.macros.protein.perKg.toFixed(1)}g/kg) car la musculation demande une reconstruction musculaire intense après chaque séance. `;
+    } else if (sportCategory === 'Sports de combat') {
+      text += `tes **protéines** sont élevées (${results.macros.protein.perKg.toFixed(1)}g/kg) pour supporter les impacts et la récupération rapide nécessaires aux sports de combat. `;
+    } else if (sportCategory === 'Endurance') {
+      text += `tes **protéines** (${results.macros.protein.perKg.toFixed(1)}g/kg) sont équilibrées pour soutenir tes efforts prolongés sans alourdir ta digestion. `;
+    } else {
+      text += `tes **protéines** (${results.macros.protein.perKg.toFixed(1)}g/kg) sont optimisées pour ton niveau d'activité. `;
+    }
+
+    // Partie glucides selon activité et sport
+    if (sportCategory === 'Endurance') {
+      text += `Tes **glucides** (${Math.round(results.macros.carbs.percent)}%) sont la priorité : ils alimentent tes longues sorties et reconstituent tes réserves de glycogène. `;
+    } else if (sportCategory === 'Musculation & Fitness') {
+      text += `Les **glucides** (${Math.round(results.macros.carbs.percent)}%) t'apportent l'énergie explosive pour tes séries intenses et favorisent la récupération post-entraînement. `;
+    } else if (objective === 'Perte de poids') {
+      text += `Tes **glucides** sont modérés (${Math.round(results.macros.carbs.percent)}%) pour encourager ton corps à puiser dans ses réserves de graisse. `;
+    } else {
+      text += `Les **glucides** (${Math.round(results.macros.carbs.percent)}%) te fournissent l'énergie quotidienne nécessaire à ton rythme de vie. `;
+    }
+
+    // Partie lipides
+    text += `Enfin, les **lipides** (${Math.round(results.macros.fat.percent)}%) sont essentiels pour tes hormones, ton cerveau et l'absorption des vitamines. `;
+
+    // Conclusion personnalisée
+    if (activity === 'Très actif' || activity === 'Assez actif') {
+      text += `Avec ton niveau d'activité **${activity.toLowerCase()}**, ces macros vont maximiser tes performances et ta récupération. 💪`;
+    } else {
+      text += `Ces proportions sont parfaitement adaptées à ton mode de vie et te permettront d'atteindre tes objectifs durablement. 🎯`;
+    }
+
+    return text;
+  };
+
   if (!results) {
     return (
-      <div className="results-container">
+      <div className="results-container-premium">
         <div className="loading">Calcul de tes résultats...</div>
       </div>
     );
   }
 
   return (
-    <div className="results-container">
+    <div className="results-container-premium">
+      {/* Background Effects */}
+      <div className="results-bg-grid"></div>
+      
+      {/* Header */}
       <div className="results-header">
-        <h1 className="results-title">Ton plan personnalisé</h1>
+        <h1 className="results-title">Ton Plan Personnalisé</h1>
         <p className="results-subtitle">Basé sur ton profil et tes objectifs</p>
       </div>
 
-      <div className="results-grid">
-        {/* Profil */}
-        <div className="result-card profile-card">
-          <div className="card-icon">👤</div>
-          <h3>Ton profil</h3>
-          <div className="profile-info">
-            <div className="info-item">
-              <span className="info-label">Âge</span>
-              <span className="info-value">{results.age} ans</span>
+      {/* Main Grid */}
+      <div className="results-main-grid">
+        
+        {/* 1. Profil Card */}
+        <div 
+          ref={(el) => cardsRef.current[0] = el}
+          className="premium-card"
+        >
+          <div className="card-header">
+            <span className="card-icon">👤</span>
+            <h2 className="card-title">Ton Profil</h2>
+          </div>
+          
+          <div className="profile-grid">
+            <div className="profile-item">
+              <div className="profile-label">Âge</div>
+              <div className="profile-value">{results.age} ans</div>
             </div>
-            <div className="info-item">
-              <span className="info-label">Sexe</span>
-              <span className="info-value">{results.sex === 'homme' ? 'Homme' : 'Femme'}</span>
+            <div className="profile-item">
+              <div className="profile-label">Sexe</div>
+              <div className="profile-value">{results.sex === 'homme' ? 'Homme' : 'Femme'}</div>
             </div>
-            <div className="info-item">
-              <span className="info-label">Taille</span>
-              <span className="info-value">{results.height} cm</span>
+            <div className="profile-item">
+              <div className="profile-label">Taille</div>
+              <div className="profile-value">{results.height} cm</div>
             </div>
-            <div className="info-item">
-              <span className="info-label">Poids</span>
-              <span className="info-value">{results.weight} kg</span>
+            <div className="profile-item">
+              <div className="profile-label">Poids</div>
+              <div className="profile-value">{results.weight} kg</div>
             </div>
-            <div className="info-item">
-              <span className="info-label">Objectif</span>
-              <span className="info-value">{results.objectiveText}</span>
+            <div className="profile-item">
+              <div className="profile-label">Objectif</div>
+              <div className="profile-value">{results.objective}</div>
             </div>
-            <div className="info-item">
-              <span className="info-label">Activité</span>
-              <span className="info-value">{results.activity}</span>
+            <div className="profile-item">
+              <div className="profile-label">Activité</div>
+              <div className="profile-value">{results.activity}</div>
             </div>
             {results.steps && results.steps !== 'Non renseigné' && results.steps > 0 && (
-              <div className="info-item">
-                <span className="info-label">Pas quotidiens</span>
-                <span className="info-value">{results.steps.toLocaleString()}</span>
+              <div className="profile-item">
+                <div className="profile-label">Pas quotidiens</div>
+                <div className="profile-value">{results.steps.toLocaleString()}</div>
               </div>
             )}
-            {results.sportCategory && results.sportCategory !== 'none' && (
-              <>
-                <div className="info-item">
-                  <span className="info-label">Sport</span>
-                  <span className="info-value">{results.sportCategory}</span>
-                </div>
-                {results.sportSpecific && (
-                  <div className="info-item">
-                    <span className="info-label">Discipline</span>
-                    <span className="info-value">{results.sportSpecific}</span>
-                  </div>
-                )}
-              </>
+            {results.sportCategory && results.sportCategory !== 'Aucun sport' && (
+              <div className="profile-item">
+                <div className="profile-label">Sport</div>
+                <div className="profile-value">{results.sportCategory}</div>
+              </div>
             )}
           </div>
         </div>
 
-        {/* Calories */}
-        <div className="result-card calories-card">
-          <div className="card-icon">🔥</div>
-          <h3>Tes besoins caloriques</h3>
-          <div className="calories-info">
-            <div className="calorie-block">
+        {/* 2. Calories Card avec Timeline */}
+        <div 
+          ref={(el) => cardsRef.current[1] = el}
+          className="premium-card"
+        >
+          <div className="card-header">
+            <span className="card-icon">🔥</span>
+            <h2 className="card-title">Tes Besoins Caloriques</h2>
+          </div>
+
+          <div className="calories-timeline">
+            <div className="calorie-stage">
               <div className="calorie-label">Métabolisme de base</div>
-              <div className="calorie-value">{results.bmr} <span>kcal</span></div>
+              <div className="calorie-number">
+                {animatedValues.bmr}
+                <span className="calorie-unit">kcal</span>
+              </div>
             </div>
-            <div className="calorie-divider">→</div>
-            <div className="calorie-block">
+
+            <div className="calorie-stage">
               <div className="calorie-label">Dépense totale</div>
-              <div className="calorie-value">{results.tdee} <span>kcal</span></div>
+              <div className="calorie-number">
+                {animatedValues.tdee}
+                <span className="calorie-unit">kcal</span>
+              </div>
             </div>
-            <div className="calorie-divider">→</div>
-            <div className="calorie-block highlight">
-              <div className="calorie-label">Objectif</div>
-              <div className="calorie-value main">{results.targetCalories} <span>kcal</span></div>
+
+            <div className="calorie-stage">
+              <div className="calorie-label">🎯 Ton objectif</div>
+              <div className="calorie-number highlight">
+                {animatedValues.targetCalories}
+                <span className="calorie-unit">kcal</span>
+              </div>
             </div>
           </div>
+
           {results.explanations && results.explanations.calories && (
             <div className="explanation-box">
-              <div className="explanation-icon">🧠</div>
+              <div className="explanation-title">
+                <span>💡</span>
+                Pourquoi ces calories ?
+              </div>
               <p className="explanation-text">{results.explanations.calories}</p>
             </div>
           )}
         </div>
 
-        {/* Macros */}
-        <div className="result-card macros-card">
-          <div className="card-icon">🥗</div>
-          <h3>Répartition des macros</h3>
-          <div className="macros-info">
-            <div className="macro-item protein">
-              <div className="macro-circle">
-                <svg viewBox="0 0 100 100">
-                  <circle cx="50" cy="50" r="45" />
+        {/* 3. Macros Card avec Donut Charts */}
+        <div 
+          ref={(el) => cardsRef.current[2] = el}
+          className="premium-card"
+        >
+          <div className="card-header">
+            <span className="card-icon">🥗</span>
+            <h2 className="card-title">Répartition des Macros</h2>
+          </div>
+
+          <div className="macros-grid">
+            {/* Protéines */}
+            <div className="macro-card protein">
+              <div className="macro-donut">
+                <svg width="150" height="150">
                   <circle 
-                    cx="50" 
-                    cy="50" 
-                    r="45" 
-                    strokeDasharray={`${(results.macros.protein.percent / 100) * 283} 283`}
+                    className="bg-circle"
+                    cx="75" 
+                    cy="75" 
+                    r="45"
+                  />
+                  <circle 
+                    className="progress-circle"
+                    cx="75" 
+                    cy="75" 
+                    r="45"
+                    style={{
+                      strokeDashoffset: 283 - (283 * (results.macros.protein.percent / 100))
+                    }}
                   />
                 </svg>
-                <div className="macro-percentage">
-                  {Math.round(results.macros.protein.percent)}%
-                </div>
+                <div className="macro-percent">{Math.round(results.macros.protein.percent)}%</div>
               </div>
-              <div className="macro-icon">🍗</div>
-              <div className="macro-label">Protéines</div>
-              <div className="macro-value">{results.macros.protein.grams}g</div>
+              <div className="macro-icon-text">🍗</div>
+              <div className="macro-name">Protéines</div>
+              <div className="macro-grams">{animatedValues.proteinGrams}g</div>
               <div className="macro-detail">{results.macros.protein.perKg.toFixed(1)}g/kg</div>
+              
               {results.explanations && results.explanations.protein && (
                 <div className="macro-explanation">
                   <p>{results.explanations.protein}</p>
                 </div>
               )}
             </div>
-            <div className="macro-item carbs">
-              <div className="macro-circle">
-                <svg viewBox="0 0 100 100">
-                  <circle cx="50" cy="50" r="45" />
+
+            {/* Glucides */}
+            <div className="macro-card carbs">
+              <div className="macro-donut">
+                <svg width="150" height="150">
                   <circle 
-                    cx="50" 
-                    cy="50" 
-                    r="45" 
-                    strokeDasharray={`${(results.macros.carbs.percent / 100) * 283} 283`}
+                    className="bg-circle"
+                    cx="75" 
+                    cy="75" 
+                    r="45"
+                  />
+                  <circle 
+                    className="progress-circle"
+                    cx="75" 
+                    cy="75" 
+                    r="45"
+                    style={{
+                      strokeDashoffset: 283 - (283 * (results.macros.carbs.percent / 100))
+                    }}
                   />
                 </svg>
-                <div className="macro-percentage">
-                  {Math.round(results.macros.carbs.percent)}%
-                </div>
+                <div className="macro-percent">{Math.round(results.macros.carbs.percent)}%</div>
               </div>
-              <div className="macro-icon">🍚</div>
-              <div className="macro-label">Glucides</div>
-              <div className="macro-value">{results.macros.carbs.grams}g</div>
+              <div className="macro-icon-text">🍚</div>
+              <div className="macro-name">Glucides</div>
+              <div className="macro-grams">{animatedValues.carbsGrams}g</div>
+              <div className="macro-detail">Énergie principale</div>
+              
               {results.explanations && results.explanations.carbs && (
                 <div className="macro-explanation">
                   <p>{results.explanations.carbs}</p>
                 </div>
               )}
             </div>
-            <div className="macro-item fat">
-              <div className="macro-circle">
-                <svg viewBox="0 0 100 100">
-                  <circle cx="50" cy="50" r="45" />
+
+            {/* Lipides */}
+            <div className="macro-card fat">
+              <div className="macro-donut">
+                <svg width="150" height="150">
                   <circle 
-                    cx="50" 
-                    cy="50" 
-                    r="45" 
-                    strokeDasharray={`${(results.macros.fat.percent / 100) * 283} 283`}
+                    className="bg-circle"
+                    cx="75" 
+                    cy="75" 
+                    r="45"
+                  />
+                  <circle 
+                    className="progress-circle"
+                    cx="75" 
+                    cy="75" 
+                    r="45"
+                    style={{
+                      strokeDashoffset: 283 - (283 * (results.macros.fat.percent / 100))
+                    }}
                   />
                 </svg>
-                <div className="macro-percentage">
-                  {Math.round(results.macros.fat.percent)}%
-                </div>
+                <div className="macro-percent">{Math.round(results.macros.fat.percent)}%</div>
               </div>
-              <div className="macro-icon">🥑</div>
-              <div className="macro-label">Lipides</div>
-              <div className="macro-value">{results.macros.fat.grams}g</div>
+              <div className="macro-icon-text">🥑</div>
+              <div className="macro-name">Lipides</div>
+              <div className="macro-grams">{animatedValues.fatGrams}g</div>
+              <div className="macro-detail">Équilibre hormonal</div>
+              
               {results.explanations && results.explanations.fat && (
                 <div className="macro-explanation">
                   <p>{results.explanations.fat}</p>
@@ -515,22 +696,65 @@ function Results() {
             </div>
           </div>
         </div>
+
+        {/* 4. Section "Pourquoi ces macros" */}
+        <div 
+          ref={(el) => cardsRef.current[3] = el}
+          className="premium-card why-section"
+        >
+          <h2 className="why-title">Pourquoi ces macros sont parfaitement adaptées à toi ?</h2>
+          <div className="why-content">
+            {generateWhyMacros().split('**').map((part, index) => 
+              index % 2 === 1 ? <strong key={index}>{part}</strong> : part
+            )}
+          </div>
+        </div>
+
+        {/* 5. Résumé visuel "Ton plan en un coup d'œil" */}
+        <div 
+          ref={(el) => cardsRef.current[4] = el}
+          className="premium-card"
+        >
+          <div className="card-header">
+            <span className="card-icon">📊</span>
+            <h2 className="card-title">Ton Plan en un Coup d'Œil</h2>
+          </div>
+
+          <div className="quick-view">
+            <div className="quick-item">
+              <div className="quick-icon">🎯</div>
+              <div className="quick-label">Calories/jour</div>
+              <div className="quick-value">{results.targetCalories} kcal</div>
+            </div>
+            <div className="quick-item">
+              <div className="quick-icon">🍗</div>
+              <div className="quick-label">Protéines</div>
+              <div className="quick-value">{results.macros.protein.grams}g</div>
+            </div>
+            <div className="quick-item">
+              <div className="quick-icon">🍚</div>
+              <div className="quick-label">Glucides</div>
+              <div className="quick-value">{results.macros.carbs.grams}g</div>
+            </div>
+            <div className="quick-item">
+              <div className="quick-icon">🥑</div>
+              <div className="quick-label">Lipides</div>
+              <div className="quick-value">{results.macros.fat.grams}g</div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      {/* CTA */}
+      {/* CTA Section */}
       <div className="results-cta">
-        <button className="cta-primary" onClick={handleOrder}>
+        <button className="cta-primary-results" onClick={handleOrder}>
+          <span className="cta-icon">🚀</span>
           Commander mes repas personnalisés
         </button>
-        <button className="cta-secondary" onClick={handleRestart}>
+        <a href="#" className="cta-secondary-results" onClick={(e) => { e.preventDefault(); handleRestart(); }}>
           Refaire le test
-        </button>
-      </div>
-
-      {/* Background */}
-      <div className="background-shapes">
-        <div className="shape shape-1"></div>
-        <div className="shape shape-2"></div>
+        </a>
       </div>
     </div>
   );
