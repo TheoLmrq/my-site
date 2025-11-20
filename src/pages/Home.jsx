@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom';
 import DishCarousel from '../components/DishCarousel';
 import HowItWorks from '../components/HowItWorks';
-import heroImage from '../assets/image/fond heroe.png';
+import heroImage from '../assets/image/Design sans titre (5).png';
 import '../styles/Home.css';
 
 function Home() {
   return (
     <>
       {/* Hero Section */}
-      <div className="home-container">
+      <div className="home-container" style={{backgroundImage: `url(${heroImage})`}}>
         {/* Background Overlay for text readability */}
         <div className="bg-overlay"></div>
         
@@ -35,11 +35,6 @@ function Home() {
                 <span className="button-text">DÉCOUVRIR NOS PLATS</span>
               </Link>
             </div>
-          </div>
-
-          {/* Right Column - Background Image */}
-          <div className="hero-right">
-            <img src={heroImage} alt="Plats Fitchen" className="hero-background-image" />
           </div>
         </div>
 
