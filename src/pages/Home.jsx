@@ -8,7 +8,7 @@ function Home() {
   return (
     <>
       {/* Hero Section */}
-      <div className="home-container" style={{backgroundImage: `url(${heroImage})`}}>
+      <div className="home-container">
         {/* Background Overlay for text readability */}
         <div className="bg-overlay"></div>
         
@@ -35,6 +35,11 @@ function Home() {
                 <span className="button-text">DÉCOUVRIR NOS PLATS</span>
               </Link>
             </div>
+          </div>
+
+          {/* Right Column - Background Image */}
+          <div className="hero-right">
+            <img src={heroImage} alt="Plats Fitchen" className="hero-background-image" />
           </div>
         </div>
 
