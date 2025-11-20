@@ -33,11 +33,9 @@ function Home() {
           {/* Left Column - Text & CTAs */}
           <div className="hero-left">
             <h1 className="hero-title">
-              <span className="title-line">TASTE THE</span>
-              <span className="title-line">DIFFERENCE</span>
-              <span className="title-line gradient-text">FEEL</span>
-              <span className="title-line">THE</span>
-              <span className="title-line gradient-text">POWER</span>
+              <span className="title-line">PRÉPARÉ</span>
+              <span className="title-line">POUR</span>
+              <span className="title-line gradient-text">PERFORMER.</span>
             </h1>
             
             <p className="hero-subtitle">
