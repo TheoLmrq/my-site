@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import DishCarousel from '../components/DishCarousel';
 import HowItWorks from '../components/HowItWorks';
-import lot1Image from '../assets/image/LOT 1.png';
+import heroImage from '../assets/image/Design sans titre (5).png';
 import '../styles/Home.css';
 
 function Home() {
@@ -33,16 +33,18 @@ function Home() {
           {/* Left Column - Text & CTAs */}
           <div className="hero-left">
             <h1 className="hero-title">
-              <span className="title-line">PUSH YOUR</span>
-              <span className="title-line gradient-text">LIMITS</span>
+              <span className="title-line">BOOSTE TA</span>
+              <span className="title-line gradient-text">PERFORMANCE</span>
+              <span className="title-line">AVEC UNE NUTRITION</span>
+              <span className="title-line gradient-text">SUR-MESURE</span>
             </h1>
             
             <p className="hero-subtitle">
-              Découvrez votre potentiel. Optimisez vos performances.
+              Des repas adaptés à ton métabolisme, tes objectifs et ton rythme.
             </p>
 
             <p className="hero-description">
-              Des repas adaptés à ton métabolisme et tes objectifs.
+              Frais, équilibrés, livrés chez toi.
             </p>
 
             <div className="cta-buttons">
@@ -57,14 +59,10 @@ function Home() {
             </div>
           </div>
 
-          {/* Right Column - LOT 1 Image */}
+          {/* Right Column - Product Image */}
           <div className="hero-right">
             <div className="hero-image-container">
-              <img 
-                src={lot1Image} 
-                alt="LOT 1 Fitchen" 
-                className="hero-image"
-              />
+              <img src={heroImage} alt="Plats Fitchen" className="hero-product-image" />
             </div>
           </div>
         </div>
