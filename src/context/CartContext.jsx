@@ -77,6 +77,12 @@ export const CartProvider = ({ children }) => {
     return cart.reduce((count, item) => count + item.quantite, 0);
   };
 
+  // Obtenir la quantité d'un article spécifique
+  const getItemQuantity = (dishId) => {
+    const item = cart.find(item => item.id === dishId);
+    return item ? item.quantite : 0;
+  };
+
   const value = {
     cart,
     addToCart,
@@ -84,7 +90,8 @@ export const CartProvider = ({ children }) => {
     updateQuantity,
     clearCart,
     getCartTotal,
-    getCartCount
+    getCartCount,
+    getItemQuantity
   };
 
   return (

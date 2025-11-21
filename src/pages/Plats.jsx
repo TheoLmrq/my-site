@@ -1,13 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
 import { dishes } from '../data/dishes';
 import { useCart } from '../context/CartContext';
 import '../styles/Plats.css';
 
 function Plats() {
   const navigate = useNavigate();
-  const { addToCart } = useCart();
-  const [addedItems, setAddedItems] = useState({});
+  const { addToCart, updateQuantity, getItemQuantity } = useCart();
 
   const handleAddToCart = (e, dish) => {
     e.preventDefault();
@@ -21,11 +19,26 @@ function Plats() {
       calories: dish.nutrition.calories,
       protein: dish.nutrition.protein
     });
+  };
 
-    setAddedItems(prev => ({ ...prev, [dish.id]: true }));
-    setTimeout(() => {
-      setAddedItems(prev => ({ ...prev, [dish.id]: false }));
-    }, 1500);
+  const handleIncrease = (e, dishId) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const currentQty = getItemQuantity(dishId);
+    updateQuantity(dishId, currentQty + 1);
+  };
+
+  const handleDecrease = (e, dish) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const currentQty = getItemQuantity(dish.id);
+    
+    if (currentQty > 1) {
+      updateQuantity(dish.id, currentQty - 1);
+    } else {
+      // Si quantité = 0, on retire du panier
+      updateQuantity(dish.id, 0);
+    }
   };
 
   return (
@@ -88,12 +101,32 @@ function Plats() {
                 </div>
               </div>
 
-              <button 
-                className={`btn-add-cart ${addedItems[dish.id] ? 'added' : ''}`}
-                onClick={(e) => handleAddToCart(e, dish)}
-              >
-                {addedItems[dish.id] ? '✓ Ajouté !' : 'Ajouter au panier'}
-              </button>
+              {getItemQuantity(dish.id) === 0 ? (
+                <button 
+                  className="btn-add-cart"
+                  onClick={(e) => handleAddToCart(e, dish)}
+                >
+                  Ajouter au panier
+                </button>
+              ) : (
+                <div className="quantity-control-bandeau">
+                  <button 
+                    className="qty-btn-minus"
+                    onClick={(e) => handleDecrease(e, dish)}
+                  >
+                    −
+                  </button>
+                  <span className="qty-display">
+                    {getItemQuantity(dish.id)}
+                  </span>
+                  <button 
+                    className="qty-btn-plus"
+                    onClick={(e) => handleIncrease(e, dish.id)}
+                  >
+                    +
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         ))}
