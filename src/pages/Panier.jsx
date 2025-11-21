@@ -26,8 +26,8 @@ function Panier() {
     <div className="panier-container">
       <div className="panier-wrapper">
         {/* Bouton retour */}
-        <button onClick={() => navigate(-1)} className="back-link">
-          ← Retour
+        <button onClick={() => navigate('/plats')} className="back-link">
+          ← Retour aux plats
         </button>
 
         {/* Header */}

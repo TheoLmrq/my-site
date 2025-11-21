@@ -43,10 +43,6 @@ function Plats() {
 
   return (
     <div className="plats-container">
-      <button onClick={() => navigate(-1)} className="back-button-plats">
-        ← Retour
-      </button>
-
       <h1 className="plats-title">NOS PLATS</h1>
       
       <div className="plats-grid">
