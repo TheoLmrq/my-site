@@ -6,6 +6,7 @@ import Plats from './pages/Plats';
 import DishProduct from './pages/DishProduct';
 import NosRecettes from './pages/NosRecettes';
 import NosPacks from './pages/NosPacks';
+import PackDetail from './pages/PackDetail';
 import NotreHistoire from './pages/NotreHistoire';
 import Commander from './pages/Commander';
 import Quiz from './pages/Quiz';
@@ -26,6 +27,7 @@ function App() {
           <Route path="/plats/:slug" element={<DishProduct />} />
           <Route path="/nos-recettes" element={<NosRecettes />} />
           <Route path="/nos-packs" element={<NosPacks />} />
+          <Route path="/nos-packs/:slug" element={<PackDetail />} />
           <Route path="/notre-histoire" element={<NotreHistoire />} />
           <Route path="/commander" element={<Commander />} />
         </Routes>

@@ -1,0 +1,302 @@
+/* Pack Detail Container */
+.pack-detail-container {
+  min-height: 100vh;
+  background: #FAFAFA;
+  padding: 120px 20px 80px 20px;
+}
+
+.pack-detail-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Back Link */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #E32626;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.back-link:hover {
+  transform: translateX(-5px);
+}
+
+/* Pack Header */
+.pack-header {
+  text-align: center;
+  background: white;
+  padding: 60px 40px;
+  border-radius: 24px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.pack-icon {
+  font-size: 80px;
+  margin-bottom: 20px;
+}
+
+.pack-title {
+  font-size: clamp(36px, 5vw, 52px);
+  font-weight: 900;
+  font-family: 'Bison', sans-serif;
+  font-style: italic;
+  color: #0A0A0A;
+  margin: 0 0 10px 0;
+}
+
+.pack-subtitle {
+  font-size: 20px;
+  color: #E32626;
+  font-weight: 600;
+  margin: 0 0 20px 0;
+}
+
+.pack-description {
+  font-size: 18px;
+  color: #666;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto 30px auto;
+}
+
+.pack-price {
+  font-size: 42px;
+  font-weight: 900;
+  color: #E32626;
+  font-family: 'Bison', sans-serif;
+  font-style: italic;
+}
+
+/* Nutrition Highlight */
+.nutrition-highlight {
+  background: white;
+  padding: 40px;
+  border-radius: 24px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.nutrition-highlight h3 {
+  font-size: 28px;
+  font-weight: 900;
+  font-family: 'Bison', sans-serif;
+  font-style: italic;
+  color: #0A0A0A;
+  margin: 0 0 30px 0;
+  text-align: center;
+}
+
+.nutrition-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.nutrition-card {
+  background: #FAFAFA;
+  padding: 30px 20px;
+  border-radius: 16px;
+  text-align: center;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.nutrition-card:hover {
+  border-color: #E32626;
+  transform: translateY(-5px);
+}
+
+.nutrition-label {
+  display: block;
+  font-size: 14px;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.nutrition-value {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  color: #0A0A0A;
+  line-height: 1.4;
+}
+
+/* Features Grid */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.feature-section {
+  background: white;
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.feature-title {
+  font-size: 24px;
+  font-weight: 900;
+  font-family: 'Bison', sans-serif;
+  font-style: italic;
+  color: #E32626;
+  margin: 0 0 25px 0;
+}
+
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+  font-size: 16px;
+  color: #333;
+  line-height: 1.6;
+}
+
+.feature-item:last-child {
+  margin-bottom: 0;
+}
+
+.feature-icon {
+  color: #E32626;
+  font-weight: 900;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+/* CTA Section */
+.pack-cta-section {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-order-pack,
+.cta-customize {
+  padding: 18px 40px;
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid #E32626;
+  font-family: 'Inter', sans-serif;
+}
+
+.cta-order-pack {
+  background: #E32626;
+  color: white;
+}
+
+.cta-order-pack:hover {
+  background: #FF4444;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(227, 38, 38, 0.3);
+}
+
+.cta-customize {
+  background: transparent;
+  color: #E32626;
+}
+
+.cta-customize:hover {
+  background: #E32626;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(227, 38, 38, 0.3);
+}
+
+/* Pack Not Found */
+.pack-not-found {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  background: #FAFAFA;
+  padding: 40px 20px;
+}
+
+.pack-not-found h2 {
+  font-size: 36px;
+  font-weight: 900;
+  color: #0A0A0A;
+}
+
+.back-button {
+  padding: 14px 30px;
+  background: #E32626;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background: #FF4444;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(227, 38, 38, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pack-detail-container {
+    padding: 100px 15px 60px 15px;
+  }
+
+  .pack-header {
+    padding: 40px 20px;
+  }
+
+  .nutrition-highlight {
+    padding: 30px 20px;
+  }
+
+  .feature-section {
+    padding: 30px 20px;
+  }
+
+  .pack-cta-section {
+    flex-direction: column;
+  }
+
+  .cta-order-pack,
+  .cta-customize {
+    width: 100%;
+  }
+
+  .nutrition-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+}
