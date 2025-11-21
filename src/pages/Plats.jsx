@@ -1,10 +1,45 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { dishes } from '../data/dishes';
 
 function Plats() {
+  const navigate = useNavigate();
+
   return (
-    <div style={{ padding: '40px 20px', maxWidth: '1400px', margin: '0 auto' }}>
-      <h1 style={{ fontSize: '48px', fontWeight: '900', fontFamily: 'Bison, sans-serif', fontStyle: 'italic', textAlign: 'center', marginBottom: '60px' }}>
+    <div style={{ padding: '40px 20px', maxWidth: '1400px', margin: '0 auto', position: 'relative' }}>
+      {/* Bouton retour */}
+      <button
+        onClick={() => navigate(-1)}
+        style={{
+          position: 'absolute',
+          top: '20px',
+          left: '20px',
+          background: 'transparent',
+          border: '2px solid #E32626',
+          color: '#E32626',
+          padding: '10px 20px',
+          borderRadius: '8px',
+          cursor: 'pointer',
+          fontWeight: '600',
+          fontSize: '14px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          transition: 'all 0.3s ease',
+          zIndex: 10
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.background = '#E32626';
+          e.currentTarget.style.color = 'white';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.background = 'transparent';
+          e.currentTarget.style.color = '#E32626';
+        }}
+      >
+        ← Retour
+      </button>
+
+      <h1 style={{ fontSize: '48px', fontWeight: '900', fontFamily: 'Bison, sans-serif', fontStyle: 'italic', textAlign: 'center', marginBottom: '60px', marginTop: '60px' }}>
         NOS PLATS
       </h1>
       
