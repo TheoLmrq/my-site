@@ -33,11 +33,11 @@ function Header() {
         {/* Navigation Links */}
         <nav className={`nav-links ${isMobileMenuOpen ? 'active' : ''}`}>
           <Link 
-            to="/nos-recettes" 
-            className={`nav-link ${location.pathname === '/nos-recettes' ? 'active' : ''}`}
+            to="/plats" 
+            className={`nav-link ${location.pathname === '/plats' ? 'active' : ''}`}
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            Nos recettes
+            Nos plats
           </Link>
           <Link 
             to="/nos-packs" 
