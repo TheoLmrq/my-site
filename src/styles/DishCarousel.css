@@ -12,6 +12,18 @@
   text-align: center;
   margin-bottom: 60px;
   padding: 0 20px;
+  transition: transform 0.3s ease;
+}
+
+.carousel-header:hover {
+  transform: translateY(-5px);
+}
+
+.carousel-header:hover .carousel-title {
+  background: linear-gradient(135deg, #FF4444 0%, #FF6666 50%, #FF8888 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .carousel-title {

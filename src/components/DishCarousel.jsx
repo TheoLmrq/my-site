@@ -121,7 +121,11 @@ function DishCarousel() {
 
   return (
     <section className="dish-carousel-section">
-      <div className="carousel-header">
+      <div 
+        className="carousel-header"
+        onClick={() => navigate('/plats')}
+        style={{ cursor: 'pointer' }}
+      >
         <h2 className="carousel-title">Nos plats</h2>
         <div className="title-underline"></div>
       </div>
