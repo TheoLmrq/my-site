@@ -1,0 +1,299 @@
+/* === CONTENEUR PRINCIPAL === */
+.plats-container {
+  min-height: 100vh;
+  background-color: #0A0A0A;
+  padding: 100px 5% 60px;
+  position: relative;
+}
+
+/* === BOUTON RETOUR === */
+.back-button-plats {
+  background: transparent;
+  border: 1px solid #FAFAFA;
+  color: #FAFAFA;
+  padding: 12px 24px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  margin-bottom: 30px;
+}
+
+.back-button-plats:hover {
+  background-color: #FAFAFA;
+  color: #0A0A0A;
+  transform: translateX(-5px);
+}
+
+/* === TITRE === */
+.plats-title {
+  font-family: 'Bison', sans-serif;
+  font-size: 64px;
+  font-weight: bold;
+  font-style: italic;
+  color: #E32626;
+  text-align: center;
+  margin: 0 0 60px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* === GRILLE === */
+.plats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* === CARTE DE PLAT === */
+.dish-card-plats {
+  background-color: #1A1A1A;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.dish-card-plats:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(227, 38, 38, 0.2);
+}
+
+/* === IMAGE === */
+.dish-image-link {
+  display: block;
+  text-decoration: none;
+}
+
+.dish-image-container {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+}
+
+.dish-image-plats {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.dish-card-plats:hover .dish-image-plats {
+  transform: scale(1.05);
+}
+
+.dish-badge-plats {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background-color: #E32626;
+  color: #FAFAFA;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* === INFORMATIONS === */
+.dish-info-plats {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  flex: 1;
+}
+
+.dish-name-link {
+  text-decoration: none;
+}
+
+.dish-name-plats {
+  font-family: 'Bison', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  font-style: italic;
+  color: #FAFAFA;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.dish-name-link:hover .dish-name-plats {
+  color: #E32626;
+}
+
+.dish-price-plats {
+  font-family: 'Bison', sans-serif;
+  font-size: 32px;
+  font-weight: bold;
+  color: #E32626;
+  margin: 0;
+}
+
+/* === MACROS EN LIGNE === */
+.macros-inline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  background-color: #0A0A0A;
+  border-radius: 8px;
+  margin-top: auto;
+}
+
+.macro-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+.macro-value {
+  font-family: 'Bison', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: #E32626;
+}
+
+.macro-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.macro-divider {
+  color: #333;
+  font-size: 20px;
+  padding: 0 5px;
+}
+
+/* === BOUTON AJOUTER AU PANIER === */
+.btn-add-cart {
+  width: 100%;
+  background-color: #E32626;
+  color: #FAFAFA;
+  border: none;
+  padding: 16px;
+  font-family: 'Bison', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 5px;
+}
+
+.btn-add-cart:hover {
+  background-color: #C41E1E;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(227, 38, 38, 0.4);
+}
+
+.btn-add-cart.added {
+  background-color: #10B981;
+  cursor: default;
+}
+
+.btn-add-cart.added:hover {
+  background-color: #10B981;
+  transform: none;
+  box-shadow: none;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 1024px) {
+  .plats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+
+  .plats-title {
+    font-size: 48px;
+  }
+
+  .dish-image-container {
+    height: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .plats-container {
+    padding: 80px 4% 40px;
+  }
+
+  .plats-title {
+    font-size: 36px;
+    margin-bottom: 40px;
+  }
+
+  .plats-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .dish-image-container {
+    height: 250px;
+  }
+
+  .dish-name-plats {
+    font-size: 20px;
+  }
+
+  .dish-price-plats {
+    font-size: 28px;
+  }
+
+  .macro-value {
+    font-size: 18px;
+  }
+
+  .btn-add-cart {
+    font-size: 16px;
+    padding: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .plats-container {
+    padding: 70px 3% 30px;
+  }
+
+  .plats-title {
+    font-size: 28px;
+  }
+
+  .dish-image-container {
+    height: 200px;
+  }
+
+  .macros-inline {
+    padding: 12px;
+  }
+
+  .macro-value {
+    font-size: 16px;
+  }
+
+  .macro-label {
+    font-size: 10px;
+  }
+}
