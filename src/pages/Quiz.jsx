@@ -530,10 +530,16 @@ function Quiz() {
 
   return (
     <div className="quiz-container">
-      {/* Bouton retour vers l'accueil */}
+      {/* Bouton retour */}
       <button 
         className="home-back-button" 
-        onClick={() => navigate('/')}
+        onClick={() => {
+          if (currentStep > 0) {
+            handleBack();
+          } else {
+            navigate('/');
+          }
+        }}
         style={{
           position: 'absolute',
           top: '20px',
@@ -561,7 +567,7 @@ function Quiz() {
           e.currentTarget.style.color = '#E32626';
         }}
       >
-        ← Accueil
+        ← {currentStep > 0 ? 'Retour' : 'Accueil'}
       </button>
 
       {/* Progress Bar */}
@@ -573,13 +579,6 @@ function Quiz() {
       <div className="progress-text">
         Question {currentStep + 1} / {questions.length}
       </div>
-
-      {/* Back Button */}
-      {currentStep > 0 && (
-        <button className="back-button" onClick={handleBack}>
-          ← Retour
-        </button>
-      )}
 
       {/* Question Bubble */}
       <div className={`question-bubble ${isAnimating ? 'slide-out' : 'slide-in'}`}>
