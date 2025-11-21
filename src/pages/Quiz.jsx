@@ -530,45 +530,41 @@ function Quiz() {
 
   return (
     <div className="quiz-container">
-      {/* Bouton retour */}
-      <button 
-        className="home-back-button" 
-        onClick={() => {
-          if (currentStep > 0) {
-            handleBack();
-          } else {
-            navigate('/');
-          }
-        }}
-        style={{
-          position: 'absolute',
-          top: '20px',
-          left: '20px',
-          background: 'transparent',
-          border: '2px solid #E32626',
-          color: '#E32626',
-          padding: '10px 20px',
-          borderRadius: '8px',
-          cursor: 'pointer',
-          fontWeight: '600',
-          fontSize: '14px',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px',
-          transition: 'all 0.3s ease',
-          zIndex: 1000
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.background = '#E32626';
-          e.currentTarget.style.color = 'white';
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.background = 'transparent';
-          e.currentTarget.style.color = '#E32626';
-        }}
-      >
-        ← {currentStep > 0 ? 'Retour' : 'Accueil'}
-      </button>
+      {/* Bouton retour - affiché seulement à partir de la question 2 */}
+      {currentStep > 0 && (
+        <button 
+          className="home-back-button" 
+          onClick={handleBack}
+          style={{
+            position: 'absolute',
+            top: '20px',
+            left: '20px',
+            background: 'transparent',
+            border: '2px solid #E32626',
+            color: '#E32626',
+            padding: '10px 20px',
+            borderRadius: '8px',
+            cursor: 'pointer',
+            fontWeight: '600',
+            fontSize: '14px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            transition: 'all 0.3s ease',
+            zIndex: 1000
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = '#E32626';
+            e.currentTarget.style.color = 'white';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = 'transparent';
+            e.currentTarget.style.color = '#E32626';
+          }}
+        >
+          ← Retour
+        </button>
+      )}
 
       {/* Progress Bar */}
       <div className="progress-bar-container">
