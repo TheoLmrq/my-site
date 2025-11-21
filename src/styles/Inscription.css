@@ -1,0 +1,211 @@
+/* === CONTENEUR PRINCIPAL === */
+.inscription-container {
+  min-height: 100vh;
+  background-color: #0A0A0A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 5% 60px;
+}
+
+.inscription-card {
+  background-color: #1A1A1A;
+  border-radius: 24px;
+  padding: 50px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  position: relative;
+}
+
+/* === BOUTON RETOUR === */
+.back-button-inscription {
+  background: transparent;
+  border: 1px solid #FAFAFA;
+  color: #FAFAFA;
+  padding: 10px 20px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.back-button-inscription:hover {
+  background-color: #FAFAFA;
+  color: #0A0A0A;
+}
+
+/* === TITRES === */
+.inscription-title {
+  font-family: 'Bison', sans-serif;
+  font-size: 48px;
+  font-weight: bold;
+  font-style: italic;
+  color: #E32626;
+  text-align: center;
+  margin: 0 0 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.inscription-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: #999;
+  text-align: center;
+  margin: 0 0 40px;
+}
+
+/* === FORMULAIRE === */
+.inscription-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #FAFAFA;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-input {
+  background-color: #0A0A0A;
+  border: 2px solid #333;
+  color: #FAFAFA;
+  padding: 16px 20px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.form-input::placeholder {
+  color: #666;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #E32626;
+  background-color: #121212;
+}
+
+.form-input.input-error {
+  border-color: #E32626;
+}
+
+.error-message {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #E32626;
+  margin-top: -4px;
+}
+
+/* === BOUTON SUBMIT === */
+.btn-submit-inscription {
+  width: 100%;
+  background-color: #E32626;
+  color: #FAFAFA;
+  border: none;
+  padding: 18px;
+  font-family: 'Bison', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.btn-submit-inscription:hover {
+  background-color: #C41E1E;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(227, 38, 38, 0.4);
+}
+
+.btn-submit-inscription:active {
+  transform: translateY(0);
+}
+
+/* === LIEN CONNEXION === */
+.login-link {
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #999;
+  margin-top: 30px;
+}
+
+.link-text {
+  color: #E32626;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.link-text:hover {
+  color: #C41E1E;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .inscription-container {
+    padding: 80px 4% 40px;
+  }
+
+  .inscription-card {
+    padding: 40px 30px;
+  }
+
+  .inscription-title {
+    font-size: 36px;
+  }
+
+  .inscription-subtitle {
+    font-size: 14px;
+  }
+
+  .back-button-inscription {
+    position: static;
+    margin-bottom: 20px;
+    width: fit-content;
+  }
+}
+
+@media (max-width: 480px) {
+  .inscription-card {
+    padding: 30px 20px;
+  }
+
+  .inscription-title {
+    font-size: 28px;
+  }
+
+  .form-input {
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+
+  .btn-submit-inscription {
+    font-size: 18px;
+    padding: 16px;
+  }
+}

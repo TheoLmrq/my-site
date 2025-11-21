@@ -13,6 +13,8 @@ import NotreHistoire from './pages/NotreHistoire';
 import Commander from './pages/Commander';
 import Quiz from './pages/Quiz';
 import Results from './pages/Results';
+import Inscription from './pages/Inscription';
+import MonCompte from './pages/MonCompte';
 import './App.css';
 
 function App() {
@@ -33,6 +35,8 @@ function App() {
           <Route path="/panier" element={<Panier />} />
           <Route path="/notre-histoire" element={<NotreHistoire />} />
           <Route path="/commander" element={<Commander />} />
+          <Route path="/inscription" element={<Inscription />} />
+          <Route path="/mon-compte" element={<MonCompte />} />
         </Routes>
       </div>
     </CartProvider>
