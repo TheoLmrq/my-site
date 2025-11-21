@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
+import { useCart } from '../context/CartContext';
 import logoFitchen from '../assets/image/LOGO_FITCHEN-removebg-preview.png';
 import '../styles/Header.css';
 
@@ -8,6 +9,8 @@ function Header() {
   const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false);
   const location = useLocation();
   const loginPopupRef = useRef(null);
+  const { getCartCount } = useCart();
+  const cartCount = getCartCount();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -96,9 +99,12 @@ function Header() {
 
         {/* User Actions - Panier & Compte */}
         <div className="user-actions">
-          {/* Bouton Panier */}
+          {/* Bouton Panier avec badge */}
           <Link to="/panier" className="icon-button cart-button" title="Panier">
             🛒
+            {cartCount > 0 && (
+              <span className="cart-badge">{cartCount}</span>
+            )}
           </Link>
 
           {/* Bouton Compte */}

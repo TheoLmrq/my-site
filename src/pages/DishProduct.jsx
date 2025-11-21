@@ -1,11 +1,30 @@
 import { useParams, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import { getDishBySlug } from '../data/dishes';
+import { useCart } from '../context/CartContext';
 import '../styles/DishProduct.css';
 
 function DishProduct() {
   const { slug } = useParams();
   const navigate = useNavigate();
   const dish = getDishBySlug(slug);
+  const { addToCart } = useCart();
+  const [isAdded, setIsAdded] = useState(false);
+
+  const handleAddToCart = () => {
+    if (dish) {
+      addToCart({
+        id: dish.id,
+        nom: dish.name,
+        prix: dish.prix,
+        image: dish.image,
+        calories: dish.nutrition.calories,
+        protein: dish.nutrition.protein
+      });
+      setIsAdded(true);
+      setTimeout(() => setIsAdded(false), 2000);
+    }
+  };
 
   if (!dish) {
     return (
@@ -107,13 +126,23 @@ function DishProduct() {
 
             {/* CTA Buttons */}
             <div className="product-actions">
-              <button className="cta-add-cart" onClick={() => navigate('/commander')}>
-                Ajouter au panier
+              <button 
+                className={`cta-add-cart ${isAdded ? 'added' : ''}`}
+                onClick={handleAddToCart}
+              >
+                {isAdded ? '✓ Ajouté !' : 'Ajouter au panier'}
               </button>
-              <button className="cta-order" onClick={() => navigate('/commander')}>
-                Commander ce plat
+              <button className="cta-order" onClick={() => navigate('/panier')}>
+                Voir le panier
               </button>
             </div>
+
+            {/* Prix */}
+            {dish.prix && (
+              <div className="product-price">
+                {dish.prix.toFixed(2)}€
+              </div>
+            )}
 
             {/* Additional Info */}
             <div className="product-info-footer">

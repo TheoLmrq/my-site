@@ -7,6 +7,7 @@ export const dishes = [
     description: 'Ce plat combine la tendreté du bœuf avec la douceur des poivrons colorés et la légèreté du riz basmati. Parfait pour soutenir vos performances sportives tout en profitant de saveurs authentiques et équilibrées.',
     image: '/src/assets/image/plat1.jpg',
     weight: 350,
+    prix: 9.90,
     nutrition: {
       calories: 485,
       protein: 42,
@@ -25,6 +26,7 @@ export const dishes = [
     description: 'Ce plat combine la douceur du curry vert avec la richesse en protéines du poulet pour soutenir tes performances sportives, tout en gardant une texture fondante et des saveurs équilibrées.',
     image: '/src/assets/image/plat2.jpg',
     weight: 340,
+    prix: 8.90,
     nutrition: {
       calories: 420,
       protein: 38,
@@ -43,6 +45,7 @@ export const dishes = [
     description: 'Un saumon parfaitement grillé accompagné de quinoa bio et de légumes de saison. Riche en acides gras essentiels et en protéines complètes pour une récupération optimale.',
     image: '/src/assets/image/plat3.jpg',
     weight: 360,
+    prix: 11.90,
     nutrition: {
       calories: 510,
       protein: 35,
@@ -61,6 +64,7 @@ export const dishes = [
     description: 'Dinde tendre et juteuse accompagnée de patates douces rôties au four. Un plat gourmand et nutritif qui combine protéines maigres et glucides complexes pour vos entraînements intenses.',
     image: '/src/assets/image/plat4.jpg',
     weight: 380,
+    prix: 9.50,
     nutrition: {
       calories: 465,
       protein: 40,
@@ -79,6 +83,7 @@ export const dishes = [
     description: 'Un grand classique de la cuisine asiatique revisité pour vos besoins sportifs. Bœuf tendre mariné à la sauce soja avec des brocolis croquants, pour un plat savoureux et nutritif.',
     image: '/src/assets/image/plat5.jpg',
     weight: 345,
+    prix: 9.90,
     nutrition: {
       calories: 445,
       protein: 39,
@@ -97,6 +102,7 @@ export const dishes = [
     description: 'Poulet mariné dans une sauce teriyaki maison, accompagné de riz complet et de légumes sautés. Un équilibre parfait entre goût et performance pour vos objectifs sportifs.',
     image: '/src/assets/image/plat6.jpg',
     weight: 370,
+    prix: 8.90,
     nutrition: {
       calories: 495,
       protein: 41,

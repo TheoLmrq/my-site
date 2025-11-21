@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import { CartProvider } from './context/CartContext';
 import Header from './components/Header';
 import Home from './pages/Home';
 import Test from './pages/Test';
@@ -7,6 +8,7 @@ import DishProduct from './pages/DishProduct';
 import NosRecettes from './pages/NosRecettes';
 import NosPacks from './pages/NosPacks';
 import PackDetail from './pages/PackDetail';
+import Panier from './pages/Panier';
 import NotreHistoire from './pages/NotreHistoire';
 import Commander from './pages/Commander';
 import Quiz from './pages/Quiz';
@@ -15,7 +17,7 @@ import './App.css';
 
 function App() {
   return (
-    <>
+    <CartProvider>
       <Header />
       <div style={{ paddingTop: '120px' }}>
         <Routes>
@@ -28,11 +30,12 @@ function App() {
           <Route path="/nos-recettes" element={<NosRecettes />} />
           <Route path="/nos-packs" element={<NosPacks />} />
           <Route path="/nos-packs/:slug" element={<PackDetail />} />
+          <Route path="/panier" element={<Panier />} />
           <Route path="/notre-histoire" element={<NotreHistoire />} />
           <Route path="/commander" element={<Commander />} />
         </Routes>
       </div>
-    </>
+    </CartProvider>
   );
 }
 

@@ -226,12 +226,23 @@
   background: #E32626;
   color: white;
   box-shadow: 0 4px 15px rgba(227, 38, 38, 0.3);
+  position: relative;
+  overflow: hidden;
 }
 
 .cta-add-cart:hover {
   background: #FF4444;
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(227, 38, 38, 0.4);
+}
+
+.cta-add-cart.added {
+  background: #10B981;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.cta-add-cart.added:hover {
+  background: #059669;
 }
 
 .cta-order {
@@ -243,6 +254,20 @@
 .cta-order:hover {
   background: rgba(227, 38, 38, 0.1);
   transform: translateY(-2px);
+}
+
+/* Prix du produit */
+.product-price {
+  font-size: 36px;
+  font-weight: 900;
+  font-family: 'Bison', sans-serif;
+  font-style: italic;
+  color: #E32626;
+  margin-top: 20px;
+  text-align: center;
+  padding: 15px;
+  background: rgba(227, 38, 38, 0.05);
+  border-radius: 12px;
 }
 
 /* ===== INFO FOOTER ===== */
